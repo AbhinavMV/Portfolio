@@ -4,7 +4,9 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
-      boxShadow: ["dark"],
+      boxShadow: {
+        dark: "5px 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.1)",
+      },
       colors: {
         blue: {
           light: "#06bcfb",
@@ -23,7 +25,9 @@ module.exports = {
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      boxShadow: ["dark"],
+    },
   },
   plugins: [],
 };

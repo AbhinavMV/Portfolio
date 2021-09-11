@@ -15,10 +15,10 @@ function Sidebar() {
       <h1 className="text-4xl font-dancing font-bold tracking-wider ">
         <span className="text-blue-light ">Abhinav</span> MV
       </h1>
-      <p className="bg-gray-300 dark:bg-gray-800 rounded-full w-11/12 text-center m-1 py-2">
+      <p className="bg-gray-300 dark:bg-black-500 rounded-full w-11/12 text-center m-1 py-2 font-semibold">
         Web Developer
       </p>
-      <p className="bg-gray-300 dark:bg-gray-800 rounded-full w-11/12 text-center m-1 py-2">
+      <p className="bg-gray-300 dark:bg-black-500 rounded-full w-11/12 text-center m-1 py-2 font-semibold">
         Download Resume
       </p>
       <div className="flex m-2 justify-around w-full">
@@ -26,9 +26,9 @@ function Sidebar() {
         <RiLinkedinBoxFill className="w-8 h-8 text-blue-light" />
         <RiGithubFill className="w-8 h-8 text-blue-light" />
       </div>
-      <div className="bg-gray-300 dark:bg-gray-800 min-w-full text-center  space-y-2 py-2 my-2">
+      <div className="bg-gray-300 dark:bg-black-500 dark:shadow-xl min-w-full text-center  space-y-2 py-2 my-2">
         <div className="flex items-center justify-center">
-          <RiMapPinLine className="w-6 h-6 text-white" />
+          <RiMapPinLine className="w-6 h-6 text-black-700 dark:text-white" />
           <p>UP,India</p>
         </div>
         <p>mvabhinav1998@gmail.com</p>
