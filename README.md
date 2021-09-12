@@ -1,5 +1,5 @@
 # Portfolio
 
-## Made using nextjs, tailwindcss
+## Made using nextjs, tailwindcss, framer motion
 
 ### Note: To be completed
