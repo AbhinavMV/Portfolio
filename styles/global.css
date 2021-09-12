@@ -8,3 +8,12 @@
     @apply font-sans bg-gradient-to-r from-blue-light to-blue-dark dark:from-black-500 dark:to-black-500;
   }
 }
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(to right bottom, #06bcfb, #4884ee);
+}

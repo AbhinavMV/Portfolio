@@ -29,42 +29,42 @@ export const aboutData = [
 export const languagesAndFrameworks = [
   {
     name: "Python",
-    percent: "10/12",
+    percent: "85%",
   },
   {
     name: "Java Script",
-    percent: "8/12",
+    percent: "75%",
   },
   {
     name: "Reactjs and Nextjs",
-    percent: "10/12",
+    percent: "78%",
   },
   {
     name: "Nodejs",
-    percent: "6/12",
+    percent: "65%",
   },
   {
     name: "Graphql",
-    percent: "8/12",
+    percent: "70%",
   },
 ];
 
 export const Others = [
   {
     name: "Tailwind",
-    percent: "10/12",
+    percent: "80%",
   },
   {
     name: "Material UI",
-    percent: "8/12",
+    percent: "75%",
   },
   {
     name: "MongoDB",
-    percent: "8/12",
+    percent: "80%",
   },
   {
     name: "SQL",
-    percent: "10/12",
+    percent: "85%",
   },
 ];
 
@@ -74,27 +74,34 @@ export const projects = [
     githubLink: "https://github.com/AbhinavMV/blog",
     demoLink: "https://inspire-poem-blog.netlify.app/",
     desc: "A blog site to share your thoughts. This is a Fullstack application using MERN stack.",
-    technology: "Reactjs,MongoDB,Express,Nodejs",
+    technology: "Reactjs,MongoDB,Express,Nodejs,Material UI",
   },
   {
     name: "Moments",
     githubLink: "https://github.com/AbhinavMV/Moments",
     demoLink: "NA",
     desc: "A social media site. This is a Fullstack application using MERNG stack.",
-    technology: "Reactjs,MongoDB,Express,Nodejs,Graphql",
+    technology: "Reactjs,MongoDB,Express,Nodejs,Graphql,Material UI",
   },
   {
     name: "Realtime Chat",
     githubLink: "https://github.com/AbhinavMV/whatsapp-clone",
     demoLink: "http://whatsapp-clone-abhinavmv.vercel.app/",
     desc: "A Whatsapp like chat app with one-to-one chats and a global chat",
-    technology: "Nextjs,Firebase",
+    technology: "Nextjs,Firebase,Tailwind",
   },
   {
     name: "ShareFile",
     githubLink: "https://github.com/AbhinavMV/sharefile",
     demoLink: "http://sharefile-mu.vercel.app/",
-    desc: "A Simple app to share your files with friends/family",
-    technology: "Nextjs,MongoDB",
+    desc: "A Simple app to share your files with friends/family. Links can also be shared to their emails",
+    technology: "Nextjs,MongoDB,Tailwind,Cloudinary",
+  },
+  {
+    name: "Portfolio",
+    githubLink: "https://github.com/AbhinavMV/Portfolio",
+    demoLink: "NA",
+    desc: "A protfolio to show all my achievements. It can also be used as template for others who need it.",
+    technology: "Nextjs,Framer Motion,Tailwind",
   },
 ];

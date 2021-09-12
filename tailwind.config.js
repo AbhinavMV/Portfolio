@@ -4,6 +4,9 @@ module.exports = {
   darkMode: "class", // or 'media' or 'class'
   theme: {
     extend: {
+      width: {
+        inherit: "inherit",
+      },
       boxShadow: {
         dark: "5px 10px 15px -3px rgba(0, 0, 0, 0.6), 0 4px 6px -2px rgba(0, 0, 0, 0.1)",
       },
