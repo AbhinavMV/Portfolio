@@ -8,25 +8,29 @@ function Sidebar() {
     setTheme(theme === "dark" ? "light" : "dark");
   };
   return (
-    <div className="flex flex-col items-center justify-center dark:text-white py-4">
+    <div className="flex flex-col items-center justify-center py-4 dark:text-white">
       <div className="relative w-32 h-32 my-2">
-        <Image src="/profile.jpg" layout="fill" className="rounded-full object-cover" />
+        <Image src="/profile.jpg" layout="fill" className="object-cover rounded-full" />
       </div>
-      <h1 className="text-4xl font-dancing font-bold tracking-wider ">
+      <h1 className="text-4xl font-bold tracking-wider font-dancing ">
         <span className="text-blue-light ">Abhinav</span> MV
       </h1>
-      <p className="bg-gray-300 dark:bg-black-500 rounded-full w-11/12 text-center m-1 py-2 font-semibold">
+      <p className="w-11/12 py-2 m-1 font-semibold text-center bg-gray-300 rounded-full dark:bg-black-500">
         Web Developer
       </p>
-      <p className="bg-gray-300 dark:bg-black-500 rounded-full w-11/12 text-center m-1 py-2 font-semibold">
+      <p
+        title="Not Available right now"
+        className="w-11/12 py-2 m-1 font-semibold text-center bg-gray-300 rounded-full cursor-not-allowed dark:bg-black-500"
+      >
         Download Resume
       </p>
-      <div className="flex m-2 justify-around w-full">
+
+      <div className="flex justify-around w-full m-2">
         <RiInstagramFill className="w-8 h-8 text-blue-light" />
         <RiLinkedinBoxFill className="w-8 h-8 text-blue-light" />
         <RiGithubFill className="w-8 h-8 text-blue-light" />
       </div>
-      <div className="bg-gray-300 dark:bg-black-500 dark:shadow-xl min-w-full text-center  space-y-2 py-2 my-2">
+      <div className="min-w-full py-2 my-2 space-y-2 text-center bg-gray-300 dark:bg-black-500 dark:shadow-xl">
         <div className="flex items-center justify-center">
           <RiMapPinLine className="w-6 h-6 text-black-700 dark:text-white" />
           <p>UP,India</p>
@@ -34,12 +38,15 @@ function Sidebar() {
         <p>mvabhinav1998@gmail.com</p>
         <p>9874563214</p>
       </div>
-      <button className="bg-gradient-to-r from-blue-light to-blue-dark w-6/12 my-2 py-2 rounded-full active:outline-none">
+      <a
+        href="mailto:mvabhinav1998@gmail.com"
+        className="w-6/12 py-2 my-2 text-center rounded-full cursor-pointer bg-gradient-to-r from-blue-light to-blue-dark"
+      >
         Email Me
-      </button>
+      </a>
       <button
         onClick={toggleUI}
-        className="bg-gradient-to-r from-blue-light to-blue-dark w-6/12 my-2 py-2 rounded-full active:outline-none"
+        className="w-6/12 py-2 my-2 rounded-full bg-gradient-to-r from-blue-light to-blue-dark active:outline-none"
       >
         Toggle UI
       </button>

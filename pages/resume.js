@@ -36,7 +36,7 @@ function Resume() {
       <div className="grid grid-cols-2 space-y-2">
         <div className="col-span-2 p-1 md:col-span-1">
           <h1 className="text-2xl">Languages & Frameworks</h1>
-          <div className="mr-4 space-y-2 text-white">
+          <div className="mr-4 space-y-2 text-white whitespace-nowrap">
             {languagesAndFrameworks.map((lang) => (
               <InfoCard lang={lang} key={lang.name} />
             ))}

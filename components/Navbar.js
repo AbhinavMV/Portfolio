@@ -5,7 +5,7 @@ const Navitem = ({ active, route, name }) => {
   return active !== name ? (
     <Link href={route}>
       <a>
-        <span className="text-2xl mr-3 hover:text-blue-light">{name}</span>
+        <span className="mr-1 text-lg md:mr-3 md:text-2xl hover:text-blue-light">{name}</span>
       </a>
     </Link>
   ) : null;
@@ -21,7 +21,7 @@ function Navbar() {
   }, [router]);
 
   return (
-    <div className="flex justify-between items-center mx-4 my-4">
+    <div className="flex items-center justify-between mx-4 my-4">
       <span className="text-3xl font-bold border-b-4 border-blue-light">{active}</span>
       <div>
         <Navitem active={active} route="/" name="About" />

@@ -79,7 +79,7 @@ export const projects = [
   {
     name: "Moments",
     githubLink: "https://github.com/AbhinavMV/Moments",
-    demoLink: "NA",
+    demoLink: "https://moments-capture.netlify.app",
     desc: "A social media site. This is a Fullstack application using MERNG stack.",
     technology: "Reactjs,MongoDB,Express,Nodejs,Graphql,Material UI",
   },
@@ -103,5 +103,12 @@ export const projects = [
     demoLink: "NA",
     desc: "A protfolio to show all my achievements. It can also be used as template for others who need it.",
     technology: "Nextjs,Framer Motion,Tailwind",
+  },
+  {
+    name: "Social Media",
+    githubLink: "https://github.com/AbhinavMV/Instagram-Clone",
+    demoLink: "https://instagram-cloned.vercel.app/login",
+    desc: "A Instagram like social media app with authentication,Add friends,posting images,messaging using firebase and react.",
+    technology: "Reactjs,Firebase,Tailwind",
   },
 ];
