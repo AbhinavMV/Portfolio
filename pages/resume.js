@@ -26,7 +26,7 @@ function Resume() {
         </div>
         <div className="col-span-2 space-y-1 md:col-span-1">
           <h1 className="text-3xl font-semibold">Experience</h1>
-          <h6 className="text-base font-medium">Tata Consultancy Services(2016-2020)</h6>
+          <h6 className="text-base font-medium">Tata Consultancy Services(2021-Present)</h6>
           <p className="text-base">
             Adding various functionalities to the CRM using <strong>Siebel</strong> and{" "}
             <strong>SQL</strong>.

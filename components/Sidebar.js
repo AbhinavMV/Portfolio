@@ -26,9 +26,15 @@ function Sidebar() {
       </p>
 
       <div className="flex justify-around w-full m-2">
-        <RiInstagramFill className="w-8 h-8 text-blue-light" />
-        <RiLinkedinBoxFill className="w-8 h-8 text-blue-light" />
-        <RiGithubFill className="w-8 h-8 text-blue-light" />
+        <a href="https://www.instagram.com/_code__forever_/">
+          <RiInstagramFill className="w-8 h-8 text-blue-light" />
+        </a>
+        <a href="https://www.linkedin.com/in/abhinav-mv-b216b8160/">
+          <RiLinkedinBoxFill className="w-8 h-8 text-blue-light" />
+        </a>
+        <a href="https://github.com/AbhinavMV">
+          <RiGithubFill className="w-8 h-8 text-blue-light" />
+        </a>
       </div>
       <div className="min-w-full py-2 my-2 space-y-2 text-center bg-gray-300 dark:bg-black-500 dark:shadow-xl">
         <div className="flex items-center justify-center">
@@ -36,7 +42,6 @@ function Sidebar() {
           <p>UP,India</p>
         </div>
         <p>mvabhinav1998@gmail.com</p>
-        <p>9874563214</p>
       </div>
       <a
         href="mailto:mvabhinav1998@gmail.com"
