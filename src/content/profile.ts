@@ -17,14 +17,15 @@ export const profile = {
 export const about = [
   "I'm a backend engineer with 5+ years of experience, most of it at Moralis, where I work on the Web3 data APIs that serve wallet, token and price data for Solana and EVM chains.",
   "My day-to-day is TypeScript and NestJS on top of PostgreSQL, DynamoDB, ClickHouse and event streams, with Rust for the services where performance matters most. I like owning a service end to end: designing it, shipping it, and then making it measurably faster once real traffic hits it.",
+  "My approach is to measure first, fix the root cause, then prove the new version is equivalent: byte-identical output, replayed production traffic or shadow comparisons before every cutover.",
   "AI-assisted development is part of how I work. I use Claude Code daily for design, review and debugging, and check what it produces against tests and production metrics.",
 ];
 
 export const metrics = [
+  { value: "29 → 4.7 GB", label: "Rust service memory (−84%)" },
+  { value: "~230x", label: "Faster p99 on a ClickHouse price lookup" },
+  { value: "3.8x", label: "Faster Solana block decoding" },
   { value: "7–8s → 2.5s", label: "Large-wallet API latency" },
-  { value: "87 → 4", label: "ClickHouse queries consolidated" },
-  { value: "10", label: "Solana DEX pool types indexed" },
-  { value: "−19%", label: "Peak memory in a Rust service" },
 ];
 
 export type Job = {
@@ -50,14 +51,16 @@ export const experience: Job[] = [
     summary:
       "Backend engineer on the team behind Moralis' Web3 data APIs for Solana and EVM chains.",
     highlights: [
-      "Designed and built a Solana DEX indexer from the ground up: a modular parser framework covering 10 pool types across Orca, Raydium, Meteora and PumpSwap, plus the pair, swap, reserve and candlestick APIs on top of it.",
-      "Built real-time streaming pipelines that turn raw on-chain data into token prices, metadata and OHLCV candles, and extended swap indexing to Uniswap v3/v4, PancakeSwap Infinity and Algebra-based DEXes.",
-      "Cut API response times for large Solana wallets from 7–8 seconds to around 2.5 seconds by parallelising metadata lookups.",
-      "Consolidated 87 ClickHouse queries scanning hundreds of millions of rows into 4 that finish in about 2 seconds.",
-      "Migrated high-traffic wallet, transfer and swap APIs to ClickHouse with shadow testing, comparing old and new responses in production before each cutover.",
-      "Built an internal AI agent that detects API latency regressions and suggests likely root causes.",
+      "Designed a Solana swap-parsing framework and wrote decoders for 9 pool types across Orca, Raydium and Meteora, plus the pair, swap and candlestick APIs built on it. Later recovered 47% of missed Raydium AMM v4 swaps (~236k records a day).",
+      "Onboarded 6 EVM chains and 12+ DEX protocols, including Uniswap v4, PancakeSwap Infinity and Algebra, and built an OHLCV candle service that rolls 10-minute candles up to 8 timeframes.",
+      "Cut a Rust data-processing service's memory from 29 GB to 4.7 GB (−84%) by switching to jemalloc, and made its Solana decoding 3.8x faster.",
+      "Redesigned a ClickHouse price lookup that was timing out under load, reaching zero timeouts, ~230x faster p99 and half the memory, and rolled it out with no downtime.",
+      "Reduced API response times for large Solana wallets from 7–8 seconds to about 2.5 seconds by parallelising metadata lookups, ending timeouts on the biggest wallets.",
+      "Migrated wallet, transfer and swap APIs to ClickHouse across 7 EVM chains, comparing live shadow traffic against production before each cutover.",
+      "Traced customer-facing 500 errors to dropped database connections and added retries behind 11 API endpoints.",
+      "Built an AI agent with the Claude Agent SDK that detects API latency regressions and runs read-only root-cause diagnosis.",
     ],
-    stack: ["TypeScript", "NestJS", "Rust", "ClickHouse", "Elasticsearch", "Kubernetes", "Solana", "EVM"],
+    stack: ["TypeScript", "NestJS", "Rust", "ClickHouse", "Elasticsearch", "OpenSearch", "Kubernetes", "Solana", "EVM"],
   },
   {
     role: "System Engineer",
@@ -84,34 +87,51 @@ export type CaseStudy = {
 
 export const caseStudies: CaseStudy[] = [
   {
-    title: "Solana DEX indexer",
+    title: "Rust service memory",
     problem:
-      "Swap, pair and price data for Solana DEXes had to be decoded from raw transactions across many protocols, each with its own pool layout.",
+      "A Rust service processing historical Solana data was running out of memory and getting OOM-killed on a 62 GB host.",
     approach:
-      "A modular parser framework where each pool type plugs in its own decoder, feeding streaming pipelines that derive prices and OHLCV candles.",
-    result: "10 pool types across Orca, Raydium, Meteora and PumpSwap, served through pair, swap, reserve and candlestick APIs.",
-    tags: ["TypeScript", "Solana", "Streaming"],
+      "Traced the growth to allocator fragmentation rather than a leak, switched to jemalloc, then profiled CPU and restructured how decoded rows are grouped.",
+    result: "Memory fell from 29 GB to 4.7 GB (−84%), throughput rose 12.5% and decoding got 3.8x faster, with byte-identical output.",
+    tags: ["Rust", "Profiling", "Solana"],
+  },
+  {
+    title: "ClickHouse price lookup",
+    problem: "A token price lookup used across many APIs was timing out in bursts under production load.",
+    approach:
+      "Redesigned its in-memory layout, split it by chain, benchmarked the options and shipped it through a pre-warmed shadow and atomic swap.",
+    result: "Zero timeouts, ~230x faster p99 and half the memory, rolled out with no downtime.",
+    tags: ["ClickHouse", "Performance"],
+  },
+  {
+    title: "Solana swap parsing",
+    problem:
+      "Swaps for Solana DEXes had to be decoded from raw transactions across many protocols, each with its own pool layout.",
+    approach:
+      "A framework where each pool type plugs in its own decoder, feeding the pair, swap and candlestick APIs. I wrote 9 of the pool-type decoders.",
+    result: "9 pool types across Orca, Raydium and Meteora. Later decoder fixes recovered 47% of missed Raydium AMM v4 swaps (~236k records a day).",
+    tags: ["TypeScript", "Rust", "Solana"],
   },
   {
     title: "Large-wallet latency",
     problem:
-      "Users holding thousands of tokens were hitting timeouts on the Solana wallet endpoints.",
-    approach: "Profiled the request path and parallelised the token metadata lookups that ran one after another.",
-    result: "Response times dropped from 7–8 seconds to around 2.5 seconds, and the timeouts went away.",
-    tags: ["Performance", "Node.js"],
+      "Wallets holding 1,800–5,000 tokens took 7–11 seconds, past the client timeout, so users saw errors.",
+    approach: "Profiled the request path and parallelised the metadata and logo lookups that ran one after another.",
+    result: "Response times dropped from 7–8 seconds to about 2.5 seconds, ending timeouts on the biggest wallets.",
+    tags: ["Node.js", "Performance"],
   },
   {
-    title: "ClickHouse query consolidation",
-    problem: "An endpoint fanned out into 87 queries scanning hundreds of millions of rows.",
-    approach: "Reworked the access pattern so the same data comes back from a handful of well-shaped queries.",
-    result: "87 queries became 4, completing in about 2 seconds.",
-    tags: ["ClickHouse", "SQL"],
+    title: "ClickHouse migration",
+    problem: "High-traffic wallet, transfer and swap APIs needed to move to ClickHouse without changing a single response.",
+    approach: "Cut over chain by chain, sending sampled shadow traffic to the new path and diffing responses against production first.",
+    result: "Migrated across 7 EVM chains, each cutover backed by response comparisons on live traffic.",
+    tags: ["ClickHouse", "Shadow testing"],
   },
   {
-    title: "Storage evaluation for token filtering",
-    problem: "A new token-filtering API needed a store that could handle fast, flexible reads.",
-    approach: "Benchmarked Elasticsearch against ClickHouse on 1M records under realistic read and write loads.",
-    result: "Chose Elasticsearch for 3–6x faster reads and twice the write throughput.",
+    title: "Search store benchmark",
+    problem: "A token filter store built on Postgres was overloading the database as the token count grew.",
+    approach: "Benchmarked Elasticsearch against ClickHouse on 1M tokens under read and sustained-write load.",
+    result: "Elasticsearch read 3–6x faster and wrote ~2.7x faster, and replaced the Postgres setup.",
     tags: ["Elasticsearch", "Benchmarking"],
   },
 ];
