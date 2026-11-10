@@ -4,7 +4,7 @@
 
 Personal portfolio of **Abhinav MV**, a backend engineer who builds blockchain data APIs and real-time indexing pipelines with TypeScript, NestJS, ClickHouse and Rust.
 
-A single-page site with a sticky two-column layout. On the left: identity, a section nav that follows your scroll position, and links. On the right: scrolling content covering experience, measurable impact, selected work, skills and earlier projects.
+A single-page site with a sticky two-column layout. On the left: identity, a section nav that follows your scroll position, and links. On the right: scrolling content covering experience, measurable impact, selected work and skills.
 
 ## Features
 
@@ -79,7 +79,6 @@ docs/
 | Jobs and their highlights | `experience` |
 | Case studies | `caseStudies` |
 | Skills | `skills` |
-| Earlier side projects | `sideProjects` |
 | Downloadable resume | Replace `public/Abhinav_MV_Resume.pdf` with the same filename, or change `profile.resume` |
 | Colours | The `:root` and `.dark` token blocks in `src/app/globals.css` |
 | Sections in the nav | The `sections` array at the top of `src/app/page.tsx` |

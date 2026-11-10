@@ -146,14 +146,6 @@ export const skills: { group: string; items: string[] }[] = [
   { group: "AI", items: ["Claude Code", "Claude Agent SDK", "Anthropic & OpenAI APIs"] },
 ];
 
-export const sideProjects = [
-  { name: "Realtime Chat", desc: "One-to-one and global chat app.", stack: "Next.js · Firebase", repo: "https://github.com/AbhinavMV/whatsapp-clone" },
-  { name: "ShareFile", desc: "Share files by link or email.", stack: "Next.js · MongoDB · Cloudinary", repo: "https://github.com/AbhinavMV/sharefile" },
-  { name: "Moments", desc: "Social feed with a GraphQL API.", stack: "React · GraphQL · MongoDB", repo: "https://github.com/AbhinavMV/Moments" },
-  { name: "Blog", desc: "Full-stack MERN blogging platform.", stack: "React · Express · MongoDB", repo: "https://github.com/AbhinavMV/blog" },
-  { name: "Fake News Detection", desc: "Final-year news classifier.", stack: "Python · LightGBM · WordBatch" },
-];
-
 export const education = {
   degree: "B.Tech, Computer Science & Engineering",
   school: "Government College of Engineering Kannur",

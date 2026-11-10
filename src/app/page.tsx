@@ -10,7 +10,6 @@ import {
   experience,
   metrics,
   profile,
-  sideProjects,
   skills,
 } from "@/content/profile";
 
@@ -19,7 +18,6 @@ const sections: NavItem[] = [
   { id: "experience", label: "Experience" },
   { id: "work", label: "Selected work" },
   { id: "skills", label: "Skills" },
-  { id: "projects", label: "Projects" },
 ];
 
 function SectionHeading({ children }: { children: React.ReactNode }) {
@@ -206,7 +204,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section id="skills" aria-label="Skills" className="mb-24 scroll-mt-16 lg:mb-32">
+          <section id="skills" aria-label="Skills" className="mb-24 scroll-mt-16">
             <SectionHeading>Skills</SectionHeading>
             <Reveal>
               <dl className="divide-y divide-border">
@@ -217,48 +215,6 @@ export default function Home() {
                   </div>
                 ))}
               </dl>
-            </Reveal>
-          </section>
-
-          <section id="projects" aria-label="Earlier projects" className="mb-24 scroll-mt-16">
-            <SectionHeading>Earlier side projects</SectionHeading>
-            <Reveal>
-              <ul className="divide-y divide-border">
-                {sideProjects.map((p) => {
-                  const inner = (
-                    <>
-                      <div className="min-w-0">
-                        <p className="font-medium text-fg">
-                          {p.name}
-                          {p.repo && (
-                            <ArrowUpRightIcon className="ml-1 inline size-3.5 text-subtle transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent" />
-                          )}
-                        </p>
-                        <p className="text-sm text-muted">{p.desc}</p>
-                      </div>
-                      <p className="shrink-0 font-mono text-[11px] text-subtle sm:text-right">{p.stack}</p>
-                    </>
-                  );
-                  return (
-                    <li key={p.name}>
-                      {p.repo ? (
-                        <a
-                          href={p.repo}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="group flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6"
-                        >
-                          {inner}
-                        </a>
-                      ) : (
-                        <div className="flex flex-col gap-1 py-4 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
-                          {inner}
-                        </div>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
             </Reveal>
             <p className="mt-8 text-sm text-subtle">
               {education.degree}, {education.school} · {education.years}
