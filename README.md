@@ -1,5 +1,7 @@
 # Abhinav MV · Portfolio
 
+**Live:** [abhinav-portfolio.vercel.app](https://abhinav-portfolio.vercel.app)
+
 Personal portfolio of **Abhinav MV**, a backend engineer who builds blockchain data APIs and real-time indexing pipelines with TypeScript, NestJS, ClickHouse and Rust.
 
 A single-page site with a sticky two-column layout. On the left: identity, a section nav that follows your scroll position, and links. On the right: scrolling content covering experience, measurable impact, selected work, skills and earlier projects.
@@ -28,7 +30,7 @@ A single-page site with a sticky two-column layout. On the left: identity, a sec
 
 ## Getting started
 
-Requires Node.js 20.9 or newer.
+Requires Node.js 20.9 or newer (pinned through `engines` in `package.json`, which Vercel also reads).
 
 ```bash
 npm install
@@ -82,7 +84,7 @@ docs/
 | Colours | The `:root` and `.dark` token blocks in `src/app/globals.css` |
 | Sections in the nav | The `sections` array at the top of `src/app/page.tsx` |
 
-Set `profile.siteUrl` to the final domain. The canonical URL, Open Graph tags, sitemap and robots file all derive from it.
+`profile.siteUrl` is the production domain. The canonical URL, Open Graph tags, sitemap and robots file all derive from it.
 
 ## Deployment
 

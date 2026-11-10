@@ -5,7 +5,7 @@ export const profile = {
   tagline:
     "I build blockchain data APIs and real-time indexing pipelines that stay fast under production load.",
   location: "Ghaziabad, India",
-  siteUrl: "https://abhinavmv.vercel.app",
+  siteUrl: "https://abhinav-portfolio.vercel.app",
   email: "mvabhinav1998@gmail.com",
   resume: "/Abhinav_MV_Resume.pdf",
   socials: {
