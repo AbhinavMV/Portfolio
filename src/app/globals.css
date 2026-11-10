@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+}
+
+:root {
+  --bg: oklch(0.985 0.002 250);
+  --surface: oklch(1 0 0);
+  --border: oklch(0.91 0.005 250);
+  --fg: oklch(0.2 0.015 260);
+  --muted: oklch(0.45 0.015 260);
+  --subtle: oklch(0.6 0.01 260);
+  --accent: oklch(0.55 0.13 185);
+  --accent-soft: oklch(0.55 0.13 185 / 0.1);
+  --glow: oklch(0.7 0.12 185 / 0.08);
+}
+
+.dark {
+  --bg: oklch(0.16 0.012 260);
+  --surface: oklch(0.2 0.014 260);
+  --border: oklch(0.28 0.014 260);
+  --fg: oklch(0.95 0.005 260);
+  --muted: oklch(0.72 0.012 260);
+  --subtle: oklch(0.56 0.012 260);
+  --accent: oklch(0.82 0.12 180);
+  --accent-soft: oklch(0.82 0.12 180 / 0.1);
+  --glow: oklch(0.7 0.12 185 / 0.1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.spotlight {
+  background: radial-gradient(600px circle at var(--x, 50%) var(--y, 0%), var(--glow), transparent 70%);
+}
